@@ -1,12 +1,27 @@
+import os
+import gdown
 import streamlit as st
 import torch
 from torchvision import models
 from PIL import Image
 import numpy as np
 import json
+
 # -------------------------
-# Streamlit UI
+# Download checkpoint if missing
 # -------------------------
+def download_checkpoint():
+    file_id = "1H-i3wU4VoloC59C_g83z2_HDz5PhC_uJ"
+    url = f"https://drive.google.com/uc?id={file_id}"
+    output = "vgg16_checkpoint.pth"
+    if not os.path.exists(output):
+        print(f"Downloading {output} from Google Drive...")
+        gdown.download(url, output, quiet=False)
+        print("Download completed.")
+    else:
+        print(f"{output} already exists locally.")
+
+download_checkpoint()
 
 # -------------------------
 # Load model checkpoint
@@ -16,7 +31,6 @@ def load_checkpoint(filepath):
     model = getattr(models, checkpoint['arch'])(pretrained=True)
     for param in model.parameters():
         param.requires_grad = False
-    # مهم جدًا يكون مطابق للـ checkpoint
     model.classifier = torch.nn.Sequential(
         torch.nn.Linear(25088, 4096),
         torch.nn.ReLU(),
@@ -36,13 +50,11 @@ def process_image(image):
         image.thumbnail((10000, 256))
     else:
         image.thumbnail((256, 10000))
-    # Center crop
     left = (image.width - 224) / 2
     top = (image.height - 224) / 2
     right = left + 224
     bottom = top + 224
     image = image.crop((left, top, right, bottom))
-    # Normalize
     np_image = np.array(image) / 255
     mean = np.array([0.485, 0.456, 0.406])
     std = np.array([0.229, 0.224, 0.225])
@@ -93,7 +105,6 @@ if uploaded_file:
         st.write(f"{i+1}: **{names[i]}** ({probs[i]*100:.2f}%)")
 
 st.write("""
-
 **Built by Waseem Almazrua**  
 [LinkedIn Profile](https://www.linkedin.com/in/waseemalmazrua/)
 
