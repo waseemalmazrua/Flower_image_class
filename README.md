@@ -29,15 +29,14 @@ It is built using PyTorch with a **fine-tuned VGG16 model**, and deployed via **
 - Fine-tuned on **Flowers102 dataset** (~6,000 training images).
 - Classifies into **102 different flower species**.
 
+![Screenshot 2025-07-01 213736](https://github.com/user-attachments/assets/1dd27f90-090d-4a39-80a7-5d5e09fc3126)
 
 
 
-![Screenshot 2025-07-01 120106](https://github.com/user-attachments/assets/9be4a6c8-5efc-4619-b208-744c1d6b15c9)
 
 
 
 
-![Screenshot 2025-07-01 120045](https://github.com/user-attachments/assets/97071afd-33ca-44fa-ad0e-78550c4d5b9f)
-
+![Screenshot 2025-07-01 213809](https://github.com/user-attachments/assets/a0a2c91b-51b3-4167-90d0-842d415cf69d)
 
 
