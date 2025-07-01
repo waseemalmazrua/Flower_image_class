@@ -31,3 +31,13 @@ It is built using PyTorch with a **fine-tuned VGG16 model**, and deployed via **
 
 
 
+
+![Screenshot 2025-07-01 120106](https://github.com/user-attachments/assets/9be4a6c8-5efc-4619-b208-744c1d6b15c9)
+
+
+
+
+![Screenshot 2025-07-01 120045](https://github.com/user-attachments/assets/97071afd-33ca-44fa-ad0e-78550c4d5b9f)
+
+
+
